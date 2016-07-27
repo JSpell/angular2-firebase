@@ -1,23 +1,30 @@
-<!--<form (submit)="addItem($event)">-->
-<form>
-    <!--<input name="item-name" [(ngModel)]="itemName">-->
-    <ul class="signup-form">
-	<li><input type="text" id="nameField" placeholder="Name" name="real-name" [(ngModel)]="realName" /></li>
-	<li><input type="text" id="userNameField" placeholder="User Name" name="user-name" [(ngModel)]="userName"/></li>
-	<li><input type="text" id="emailField" placeholder="Email" [(ngModel)]="userEmail"/></li>
-	<li><input type="password" id="passwordField" placeholder="Password" [(ngModel)]="password"/></li>
-	<li><input type="password" id="confirmPasswordField" placeholder="Confirm Password"/></li>
-</ul>
-    <button (click)="signUp()">Register</button>
-</form>
+<div *ngIf="!loggedIn">
+    <div *ngIf="error">
+        {{ errorText }}
+    </div>
+    <form>
+        <!--<input name="item-name" [(ngModel)]="itemName">-->
+        <ul class="signup-form">
+        <li><input type="text" id="nameField" placeholder="Name" name="real-name" [(ngModel)]="realName" /></li>
+        <li><input type="text" id="userNameField" placeholder="User Name" name="user-name" [(ngModel)]="userName"/></li>
+        <li><input type="text" id="emailField" placeholder="Email" [(ngModel)]="userEmail"/></li>
+        <li><input type="password" id="passwordField" placeholder="Password" [(ngModel)]="password"/></li>
+        <li><input type="password" id="confirmPasswordField" placeholder="Confirm Password" [(ngModel)]="confirmPassword"/></li>
+    </ul>
+        <button (click)="signUp()">Register</button>
+    </form>
 
-<form>
-    <ul class="signup-form">
-	<li><input type="text" id="emailField" placeholder="Email" [(ngModel)]="userEmail"/></li>
-	<li><input type="password" id="passwordField" placeholder="Password" [(ngModel)]="password"/></li>
-</ul>
-    <button (click)="login()">Login</button>
-</form>
+    <form>
+        <ul class="signup-form">
+        <li><input type="text" id="emailField" placeholder="Email" [(ngModel)]="userEmail"/></li>
+        <li><input type="password" id="passwordField" placeholder="Password" [(ngModel)]="password"/></li>
+    </ul>
+        <button (click)="login()">Login</button>
+    </form>
+</div>
+<div *ngIf="loggedIn">
+    <p>You're logged in</p>
+</div>
 <ul>
     <li *ngFor="let entry of userData | async">
     {{ entry.realName }}
