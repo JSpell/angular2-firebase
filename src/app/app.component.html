@@ -24,6 +24,7 @@
 </div>
 <div *ngIf="loggedIn">
     <p>You're logged in</p>
+    <button (click)="logOutUser()">log out</button>
 </div>
 <ul>
     <li *ngFor="let entry of userData | async">

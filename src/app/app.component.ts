@@ -98,7 +98,11 @@ export class AppComponent {
         return false;
     }
 
-    public displayError(err: string) {
+    logOutUser() {
+        this._auth.logout();
+    }
+
+    displayError(err: string) {
         this.error = true;
         this.errorText = err;
     }
