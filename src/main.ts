@@ -1,12 +1,13 @@
 import { bootstrap } from '@angular/platform-browser-dynamic';
-import { enableProdMode } from '@angular/core';
 import { FIREBASE_PROVIDERS, defaultFirebase, firebaseAuthConfig, AuthProviders, AuthMethods } from 'angularfire2';
-import { AppComponent } from './app/app.component';
-if (process.env.ENV === 'production') {
-  enableProdMode();
-}
-bootstrap(AppComponent, [
+import { App } from './app/authState.component';
+import { disableDeprecatedForms, provideForms } from '@angular/forms';
+
+
+bootstrap(App, [
   FIREBASE_PROVIDERS,
+  disableDeprecatedForms(),
+    provideForms(),
   // Initialize Firebase app  
   defaultFirebase({
     apiKey: "AIzaSyD62AjtNiXO4eAhXTa6v-g1JmjVeT58tLY",

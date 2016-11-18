@@ -1,0 +1,12 @@
+<div *ngIf="!loggedIn">
+    <div *ngIf="error">
+        {{ errorText }}
+    </div>
+    <form>
+        <ul class="signup-form">
+        <li><input type="text" id="emailField" placeholder="Email" [(ngModel)]="loginEmail" name="email"/></li>
+        <li><input type="password" id="passwordField" placeholder="Password" [(ngModel)]="loginPassword" name="password"/></li>
+    </ul>
+        <button (click)="login()">Login</button>
+    </form>
+</div>

@@ -1,0 +1,21 @@
+<ul>
+    <li *ngFor="let question of questionData | async; let questionDataIndex = index">
+        <div class="question-container">
+            <p>{{ question.$key }} : {{ question.questionText }}</p>
+            <ul>
+                <li *ngFor="let answer of question.options; let i = index">
+                    <input type="radio" 
+                            [attr.name]="question.$key" 
+                            [value]="i" 
+                            id="{{question.$key}}-{{i}}"
+                            [(ngModel)]='question.userAnswer'
+                    />
+                    <label htmlFor="{{question.$key}}-{{i}}"> {{ answer }} </label>
+                </li>                
+            </ul>
+            <button (click)="submitAnswer(question.$key, question.userAnswer)">Submit</button>
+            <p>Your answer is {{answerEval}}</p> 
+        </div>
+    </li>
+</ul>
+
