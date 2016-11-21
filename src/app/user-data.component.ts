@@ -9,19 +9,21 @@ import {AngularFire, FirebaseListObservable, FirebaseObjectObservable} from 'ang
 export class UserDataComponent {
     questionData: FirebaseListObservable<any[]>;
     answerEval: string;
+    result: any;
 
     constructor(public af: AngularFire) {
         this.questionData = af.database.list("/questionData");
         this.questionData.subscribe(result => {
-            console.log(result[0].answer);
+            this.result = result;
         });
     }
 
-    submitAnswer(key: string, answer: string) {
-        console.log(answer);
+    getAnswer(question: any, answer: any) {
+        question.answerEval = question.options[answer];
+        // console.log(question.answer == answer);
     }
 
-    getAnswer() {
+    submitAnswer() {
         
     }
 
